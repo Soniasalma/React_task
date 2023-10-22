@@ -1,0 +1,23 @@
+.cyborg-navbar{
+min-height: 100px;
+color: black;
+margin-left: calc(var(--margin-primary)/5);
+}
+.nav-link {
+    color:black
+}
+.nav-link:hover{
+    background-color: #dd24244f;
+}
+
+.navbar-toggler{
+    display: block;
+    background-color: black;
+    color:black;
+}
+.nav-arrow-left{
+    display: block;
+    background-color: var(--color-light);
+    color:black;
+    font-size: 40px; 
+}

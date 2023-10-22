@@ -1,0 +1,80 @@
+.nav-items ,.nav-items-body{
+    display: flex;
+    justify-content: space-between;
+    max-height: 40px;
+    
+}
+.nav-items-body{
+    background-color: white;
+}
+.nav-heart ,.nav-arrow-left{
+    font-size: 150%;
+    vertical-align: middle;
+}
+
+
+.card-navbar ul{
+    display: flex;
+    justify-content: space-between;
+   
+    
+}
+.content-details, .about-list{
+    padding:calc(var(--padding-primary)/2) ;
+    background-color: var(--color-light);
+    border-top-right-radius: var(--border-radius-primary);
+    border-top-left-radius: var(--border-radius-primary);
+    margin-top: var(--margin-primary);
+    
+    
+}
+ .content-details{
+    padding: var(--padding-primary);
+    background-color: var(--color-light);
+    border-radius: var(--border-radius-primary);
+    margin-top: var(--margin-primary);
+    color:var(--color-darkest);
+    width: 100%;
+}
+
+
+.list-group-items {
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+
+
+.card-title{
+    font-weight: var(--font-weight-bold);
+}
+
+*{
+    color:black;
+}
+.title-exp{
+    display: flex;
+    justify-content:space-between;
+    margin-top: 0;
+}
+.detail-button{
+    float:left;
+
+}
+
+.card-pokemon , .nav-arrow-left{
+    
+    background-color:var(--color-primary);
+ }
+ .detail-add a{
+     
+        font-size: 14px;
+        color: var(--color-light);
+        border-radius: var(--border-radius-primary);
+        padding: 10px 15px;
+        letter-spacing: 0.5px;
+        transition: all 0.3s;
+        background-color: var(--color-primary);
+        float: left;
+    }

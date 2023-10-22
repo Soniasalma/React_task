@@ -1,0 +1,19 @@
+/*.main-container{
+    padding: var(--padding-primary);
+    background-color: var(--color-dark);
+    border-radius: var(--border-radius-primary);
+    margin-top: var(--margin-primary);
+    color:var(--color-light)
+}*/
+.main-container{
+    padding: var(--padding-primary);
+    background-color: var(--color-light);
+    border-radius: var(--border-radius-primary);
+    margin-top: var(--margin-primary);
+    color:var(--color-darkest)
+
+    
+
+}
+
+

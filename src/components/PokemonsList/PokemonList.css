@@ -1,0 +1,34 @@
+
+.pokemon-list-item{
+    display: grid;
+    grid-template-columns: auto auto auto auto ;
+    gap: 10px;
+    background-color:var(--color-light);
+    padding: 10px;
+    color:black;
+}
+.pokemon-card{
+    flex: 1 25%;
+    position: relative;
+}
+.team-btn{
+    display:block;
+}
+.pokemon-card-wrapper{
+    background-color: var(--color-dark);
+    border-radius: var(--border-radius-secondary);
+    padding: calc(var(--padding-primary)/2);
+    margin: calc(var(--margin-primary)/5);
+}
+ .card-image{
+   position: absolute;
+   z-index: 1;
+   right: 10px;
+   width: 50%;
+   height: 50%;
+   
+}
+.pokemon-card-content{
+    display: flex;
+    justify-content :space-between;
+}

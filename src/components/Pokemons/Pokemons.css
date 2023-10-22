@@ -1,0 +1,11 @@
+.pokegallery{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: fit-content;
+    height: 100vh;
+    position:absolute;
+}
+.pokegallery .card{
+  flex:  1 50%
+}
