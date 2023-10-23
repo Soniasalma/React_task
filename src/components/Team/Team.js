@@ -13,11 +13,9 @@ const Team = () => {
     
     
     const pokemons=useSelector(state=>state.team.pokemons)
+
     useEffect(()=>{
       setPokemonsTeam(pokemons)
-      
-      
-      
     },[pokemons])
 
     console.log("Pokemooooonnnnnssssss")
@@ -30,12 +28,17 @@ const Team = () => {
     
   return (
     <SectionWrapper>
+      
     <Header/>
     {
-    arr.length === 0 ?
+    
+
+    pokemons.length === 0 ?
          alert("There are no pokemons in the team")
-        :  <ul>
-         {arr.map((pokemon)=>{
+        :  
+        <div className='team-button'>
+        <ul>
+         {pokemons.map((pokemon)=>{
           (
             <li className='team-item'>
             <img src={pokemon.image} alt='' className='team-item-image'/>
@@ -51,14 +54,20 @@ const Team = () => {
         </li>
           )
         })}
-         <span className='team-reset' 
+          
+         <button className='team-reset' 
        onClick={
           ()=>dispatch(resetTeam({
               
             }))
         }>
-       <FaRedoAlt/></span>
+       Eliminate the team</button>
+       
+       
         </ul>
+        </div>
+
+        
 
         
           
