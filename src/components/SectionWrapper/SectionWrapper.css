@@ -1,6 +1,7 @@
 .section-wrapper{
     background-color: var(--color-light);
-    padding: var(--padding-primary);
+    padding:Calc(var(--padding-primary)/4) ;
     border-radius: var(--border-radius-primary);
-    margin-top: var(--margin-primary);
+    margin-top: Calc(var(--margin-primary)/2);
+    height: 100%;
 }

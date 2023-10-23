@@ -1,17 +1,10 @@
 import React  from 'react'
 import './PokemonList.css'
-import { fetchApi } from '../../hooks/fetchApi';
 import { useEffect,useState } from "react"
 import useFetch from '../../hooks/useFetch';
 import SectionWrapper from '../SectionWrapper/SectionWrapper';
 import SectionHeader from '../SectionHeader/SectionHeader';
-import HeaderOfPokemon from '../HeaderOfPokemon/HeaderOfPokemon';
-
-
-import { addToTeam } from '../../redux/teamReducer';
-import { useDispatch } from 'react-redux';
 import   {Header}  from '../../sections/index'
-import CardOfPokemon from '../../components/CardOfPokemon/CardOfPokemon';
 import { Link } from 'react-router-dom'
 
 
@@ -22,15 +15,11 @@ const PokemonList = () => {
   const [pokeSelected,setPokeSelected]=useState()
 
  
+ const [data]=useFetch("/pokemon?limit=20")
 
-  
- const [data]=useFetch("/pokemon?limit=10")
-const dispatch=useDispatch()
  useEffect(()=>{
   data && setPoke(data)
    console.log(data)
-  
-
 },[data])
 
 
@@ -48,8 +37,8 @@ return (
           <div  className='pokemon-card-wrapper' >
 
 <div className='pokemon-card-content' >
-              <h5 >{item.name}</h5>
-              <h5 >{item.id}</h5>
+              <h5 className="pokemon-card-name" >{item.name}</h5>
+              
               <span>{`#${item.id}`}</span>
               </div>
               
@@ -65,13 +54,9 @@ return (
     return(
     <h6 key={tipo.id}>{tipo.type.name}</h6>)})
     }
-    <button className='team-btn' onClick={()=>dispatch(addToTeam({
-      id:item.id,
-      name:item.name,
-      image:item.sprites.front_default,
-    }))}>add to team</button>
-   <div>
-   <Link to={`/CardOfPokemon/${item.id}`} className="nav-link">
+    
+   <div clasName="card-btn">
+   <Link to={`/CardOfPokemon/${item.id}`} className="primary-btn">
     <button>details</button>
    </Link>
       

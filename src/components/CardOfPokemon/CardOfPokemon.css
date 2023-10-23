@@ -1,15 +1,29 @@
-.nav-items ,.nav-items-body{
+.nav-items {
     display: flex;
     justify-content: space-between;
-    max-height: 40px;
+    max-height:40px;
     
 }
-.nav-items-body{
-    background-color: white;
+.content-details{
+    padding:calc(var(--padding-primary)/2) ;
+    background-color: var(--color-light);
+    border-top-right-radius: var(--border-radius-primary);
+    border-top-left-radius: var(--border-radius-primary);
+    margin-top: var(--margin-primary);
+    
+    
 }
-.nav-heart ,.nav-arrow-left{
-    font-size: 150%;
+
+
+
+
+
+.header-links{
     vertical-align: middle;
+}
+.nav-heart {
+    font-size: 100%;
+    margin-top: -5px;
 }
 
 
@@ -19,24 +33,11 @@
    
     
 }
-.content-details, .about-list{
-    padding:calc(var(--padding-primary)/2) ;
-    background-color: var(--color-light);
-    border-top-right-radius: var(--border-radius-primary);
-    border-top-left-radius: var(--border-radius-primary);
-    margin-top: var(--margin-primary);
-    
-    
-}
- .content-details{
-    padding: var(--padding-primary);
-    background-color: var(--color-light);
-    border-radius: var(--border-radius-primary);
-    margin-top: var(--margin-primary);
-    color:var(--color-darkest);
-    width: 100%;
-}
 
+.back-arrow{
+    background-color: var(--color-light);
+    padding:0;
+}
 
 .list-group-items {
     display:flex;
@@ -58,14 +59,15 @@
     justify-content:space-between;
     margin-top: 0;
 }
-.detail-button{
-    float:left;
+.team-btn{
+    margin-top: calc(var(--margin-primary)/2);
+    float: left;
 
 }
 
-.card-pokemon , .nav-arrow-left{
+.card-pokemon {
     
-    background-color:var(--color-primary);
+    background-color:var(--color-light);
  }
  .detail-add a{
      
@@ -75,6 +77,6 @@
         padding: 10px 15px;
         letter-spacing: 0.5px;
         transition: all 0.3s;
-        background-color: var(--color-primary);
+        background-color: var(--color-light);
         float: left;
     }
