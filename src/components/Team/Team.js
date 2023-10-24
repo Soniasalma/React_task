@@ -6,77 +6,87 @@ import { useSelector,useDispatch } from 'react-redux'
 import { removeFromTeam ,resetTeam} from '../../redux/teamReducer'
 import{SectionWrapper} from '../../components/index'
 import{Header} from '../../sections/index'
+import { useRef } from 'react'
 
 const Team = () => {
-    const arr=[]
-    const [pokemonsTeam,setPokemonsTeam]=useState(null)
-    
-    
+  
     const pokemons=useSelector(state=>state.team.pokemons)
-
-    useEffect(()=>{
-      setPokemonsTeam(pokemons)
-    },[pokemons])
+    const [list, setList] = useState([]);
+    useEffect(()=>setList(pokemons),[pokemons])
 
     console.log("Pokemooooonnnnnssssss")
-    console.log(pokemonsTeam);
-    
-   
-     
-   
+    console.log(pokemons);
+
+    const dragItem = useRef();
+    const dragOverItem = useRef();
     const dispatch=useDispatch()
+    const dragStart = (e, position) => {
+      dragItem.current = position;
+    };
+    const dragEnter = (e, position) => {
+      dragOverItem.current = position;
+      console.log(e.target.innerHTML);
+    };
+    const drop = (e) => {
+      const copyListItems = [...list];
+      const dragItemContent = copyListItems[dragItem.current];
+      copyListItems.splice(dragItem.current, 1);
+      copyListItems.splice(dragOverItem.current, 0, dragItemContent);
+      dragItem.current = null;
+      dragOverItem.current = null;
+      setList(copyListItems);
+    };
     
   return (
-    <SectionWrapper>
-      
-    <Header/>
-    {
+    <>
     
-
-    pokemons.length === 0 ?
-         alert("There are no pokemons in the team")
-        :  
-        <div className='team-button'>
-        <ul>
-         {pokemons.map((pokemon)=>{
-          (
-            <li className='team-item'>
-            <img src={pokemon.image} alt='' className='team-item-image'/>
+     <SectionWrapper>
+     
+      
+      <Header/>
+      {   <>
+      <div className='the-first-div'>
+          
+          
+        <div className='second-div'>
+           <ul>
+         {pokemons.map((pokemon ,index)=>
+          ( 
+          <div>
+            <div  onDragStart={(e) => dragStart(e, index)}  onDragEnter={(e) => dragEnter(e, index)} onDragEnd={drop} key={index} draggable><li className='team-item'>
+            <img src={pokemon.image} className='team-item-image'></img>
             <span className='team-item-name'>{pokemon.name}</span>
-            
-            <span className='team-item-remove' onClick={
+            <button className='team-item-remove' onClick={
               ()=>dispatch(removeFromTeam({
                   id:pokemon.id,
                  
-                }))
-            }><FaTrash/></span>
-
-        </li>
-          )
-        })}
-          
-         <button className='team-reset' 
-       onClick={
+                }))}>Remove from the team </button>
+          </li></div>
+          </div> )
+        )}
+        <div className="div-btn">
+    <button className='team-reset' onClick={
           ()=>dispatch(resetTeam({
               
             }))
         }>
-       Eliminate the team</button>
-       
-       
-        </ul>
-        </div>
+    Eliminate the team</button>
+    </div>
 
-        
+     
+       </ul>
 
-        
-          
-      }
- 
-            
+  
     
-    </SectionWrapper>
-  )
-}
+    </div>
+    <div className='first-div'></div>
+    </div>
+    
+    </>
+    }
+    
+</SectionWrapper>
+    </>
+)}
 
 export default Team

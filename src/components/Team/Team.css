@@ -1,7 +1,52 @@
-.team-reset{
-    position:absolute;
-    bottom: 0px;
+.team-item{
+    display: flex;
+    align-items: center;
+    gap:10px;
+    padding:15px 20px;
+    border-bottom: 1px solid #a4a4a4;
+    cursor: pointer;
+    justify-content: space-between;
 }
-.team-button{
-    position: absolute;
+.team-item:hover{
+    background-color: #c8c8c8;
+}
+.team-item-image{
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    width: 10%;
+}
+.team-item-name{
+    
+    font-size: 20px;
+
+}
+.second-div{
+    position: relative;
+}
+.team-reset{
+position: absolute;
+right:auto;
+left:auto;
+padding-left:0;
+padding-right:0;
+display:block;
+margin-top: Calc(var(--margin-primary)/2);
+}
+
+.first-div{
+    background-color: red;
+     width: 50%;
+      
+       margin: 10px;
+}
+.second-div{
+    background-color: grey;
+     width:50%; 
+     width: 50%;
+      margin: 10px;
+}
+.the-first-div{
+   display: flex;
+   flex-direction: row;
+    background-color: blue;
 }

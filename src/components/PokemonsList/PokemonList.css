@@ -20,7 +20,7 @@
   
 }
 .card-btn{
-    margin-left:Calc(var(--padding-primary)/4) ;
+    margin:Calc(var(--padding-primary)/4) ;
 }
 .pokemon-card-wrapper{
     background-color: var(--color-light);
