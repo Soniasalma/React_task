@@ -1,8 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = {
-  pokemons: [""],
-}
+const initialState = 
+  localStorage.getItem('todoList') !== null
+    ? localStorage.getItem('todoList')
+    : { pokemons: [] };
+
+localStorage.setItem('todoList', initialState);
 
 export const teamSlice = createSlice({
   name: 'team',
@@ -26,7 +29,7 @@ export const teamSlice = createSlice({
         }
         
 
-        alert(`"The team contains six pokemons , you can't add more"${todos}`)
+        alert(`" The team contains six pokemons , you can't add more         "${todos}`)
       }
       else 
       {
@@ -54,12 +57,16 @@ export const teamSlice = createSlice({
         
         
       },
+      dragAndDropSave(state, action) {
+        state.pokemons = action.payload;
+        localStorage.setItem('todoList', state);
+      },
    
    
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addToTeam,removeFromTeam ,resetTeam} = teamSlice.actions
+export const { addToTeam,removeFromTeam ,resetTeam,dragAndDropSave} = teamSlice.actions
 
 export default teamSlice.reducer

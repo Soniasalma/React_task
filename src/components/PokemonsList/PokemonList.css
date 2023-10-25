@@ -2,6 +2,7 @@
 .pokemon-list-item{
     display: grid;
     grid-template-columns: auto auto auto auto ;
+    width:inline;
     gap: 10px;
     background-color:var(--color-light);
     padding: 10px;
@@ -37,6 +38,7 @@
    right: 10px;
    width: 50%;
    height: 50%;
+   
    
 }
 .pokemon-card-content{

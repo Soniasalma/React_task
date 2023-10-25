@@ -15,10 +15,11 @@ const arr=[]
 const arr2=[]
 
 
+
 const CardOfPokemon = () => {
   const navigate = useNavigate()
   const[pokeSelect,setPokeSelect]=useState(null)
-  const[selectDetail,setSelectDetail]=useState(null)
+ 
 
   const [about,setAbout]=useState(false)
   const [base,setBase]=useState(false)
@@ -41,9 +42,13 @@ const CardOfPokemon = () => {
 
   useEffect(() => {
    getData(id);
+   setPokeSelect(window.localStorage.getItem('arr'));
    
 
   }, []);
+  useEffect(() => {
+    window.localStorage.setItem('arr', arr);
+  }, [arr]);
 
   function getData(id){
 
@@ -57,6 +62,12 @@ const CardOfPokemon = () => {
 
       console.log(arr)
       })}
+
+      useEffect(() => {
+        setPokeSelect(window.localStorage.getItem('data'));
+      }, []);
+      
+     
 
     
     const showAboutDetails=()=>{
@@ -124,7 +135,6 @@ console.log(arr2)
         name:item.name,
       image:item.sprites.front_default,
       }))
-      alert("The Pokimon has added to the team")
       }}>Add to team</button>
       </div>
       </div>

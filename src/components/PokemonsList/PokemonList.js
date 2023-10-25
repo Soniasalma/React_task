@@ -22,6 +22,14 @@ const PokemonList = () => {
    console.log(data)
 },[data])
 
+useEffect(() => {
+  setPoke(window.localStorage.getItem('data'));
+}, []);
+
+useEffect(() => {
+  window.localStorage.setItem('data', data);
+}, [data]);
+
 
 return (
     

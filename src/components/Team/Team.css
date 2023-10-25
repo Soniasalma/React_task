@@ -6,7 +6,16 @@
     border-bottom: 1px solid #a4a4a4;
     cursor: pointer;
     justify-content: space-between;
+    width: 60%;
+    margin-left: 20%;
+   
+    
+
 }
+.team-div{
+    text-align: center;
+}
+
 .team-item:hover{
     background-color: #c8c8c8;
 }
@@ -20,9 +29,7 @@
     font-size: 20px;
 
 }
-.second-div{
-    position: relative;
-}
+
 .team-reset{
 position: absolute;
 right:auto;
@@ -31,22 +38,18 @@ padding-left:0;
 padding-right:0;
 display:block;
 margin-top: Calc(var(--margin-primary)/2);
+margin-bottom: Calc(var(--margin-primary)/2);
+margin-left: 20%;
+width: 15%;
+}
+.team-item-remove{
+    width: 15%;  
 }
 
-.first-div{
-    background-color: red;
-     width: 50%;
+
+.team-div{
+    
+      align-items: center;
       
-       margin: 10px;
 }
-.second-div{
-    background-color: grey;
-     width:50%; 
-     width: 50%;
-      margin: 10px;
-}
-.the-first-div{
-   display: flex;
-   flex-direction: row;
-    background-color: blue;
-}
+
