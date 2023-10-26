@@ -3,7 +3,8 @@ import './PokemonDetails.css'
 import SectionWrapper from '../SectionWrapper/SectionWrapper'
 export const PokemonDetails = (props) => {
   return (
-    <>
+    <section >
+    
     
     <div className='about-list'>
     <ul className='detail-items'>
@@ -37,8 +38,10 @@ export const PokemonDetails = (props) => {
     
     
     </div>
-    
-    </>
+   
+  
+   
+    </section>
     
   )
 }

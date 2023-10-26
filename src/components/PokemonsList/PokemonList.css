@@ -1,14 +1,29 @@
 
 .pokemon-list-item{
+    background-color: white;
+    border-top: 2px solid black;
+    padding: 15px 15px;
+    border-radius: .5rem;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-position: 50%;
+    box-shadow: 4px 4px 30px rgb(59, 58, 58);
+    color: white;
+    
+
     display: grid;
-    grid-template-columns: auto auto auto auto ;
+    grid-template-columns: auto auto  ;
     width:inline;
-    gap: 10px;
-    background-color:var(--color-light);
-    padding: 10px;
-    color:black;
     
     
+    
+}
+.pokemon-card-content h6{
+  margin-left:Calc(var(--margin-primary)/2) ;
+
 }
 .pokemon-card-name{
     font-weight: var(--font-weight-bold);
@@ -22,6 +37,7 @@
 }
 .card-btn{
     margin:Calc(var(--padding-primary)/4) ;
+   
 }
 .pokemon-card-wrapper{
     background-color: var(--color-light);
@@ -33,11 +49,12 @@
 }
 
  .card-image{
-   position: absolute;
-   z-index: 1;
-   right: 10px;
-   width: 50%;
-   height: 50%;
+    
+    width: 50%;
+    height: 75%;
+    position: relative;
+    left: 2%;
+    margin-top: -20rem;
    
    
 }

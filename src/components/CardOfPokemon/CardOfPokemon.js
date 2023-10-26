@@ -48,7 +48,7 @@ const CardOfPokemon = () => {
   }, []);
   useEffect(() => {
     window.localStorage.setItem('arr', arr);
-  }, [arr]);
+  }, [params]);
 
   function getData(id){
 
@@ -64,7 +64,7 @@ const CardOfPokemon = () => {
       })}
 
       useEffect(() => {
-        setPokeSelect(window.localStorage.getItem('data'));
+        setPokeSelect(window.localStorage.getItem('arr'));
       }, []);
       
      
@@ -72,9 +72,15 @@ const CardOfPokemon = () => {
     
     const showAboutDetails=()=>{
         about ? setAbout(false):setAbout(true)
+        setBase(false)
+        setEvolution(false)
+        setMoves(false)
     }
     const showBaseDetails=()=>{
       base ? setBase(false):setBase(true)
+      setAbout(false)
+      setEvolution(false)
+        setMoves(false)
   }
   const showEvolutionDetails=()=>{
     evolution ? setBase(false):setBase(true)
@@ -154,7 +160,7 @@ console.log(arr2)
         
         </div>
       <div class="nav-item">
-      <Link to="#base-id" className="nav-link" onclick={showBaseDetails} >Base State</Link>
+      <Link to="#about-id" className="nav-link" onclick={showBaseDetails} >Base State</Link>
       </div>
       <div class="nav-item">
       <Link to="#evolution-id" className="nav-link" onclick={showEvolutionDetails} >Evolution</Link>
@@ -169,18 +175,11 @@ console.log(arr2)
 
     <div>
     <p id="about-id" className='about-list'>
-        { about ? <PokemonDetails  height={item.height} weight={item.weight} classification={item.species} resistant={item.resistant} abilities={""} /> :"" } 
+        { about && <PokemonDetails  height={item.height} weight={item.weight}  /> } 
+        { base && <PokemonDetails  height={item.height}/>  } 
         
         </p>
-        <p id="base-id" className='about-list'>
-        { base ? <PokemonDetails click={"about"} height={item.height}/> :"" } 
-        </p>
-        <p id="evolution-id" className='about-list'>
-        { evolution ? <PokemonDetails click={"about"} height={item.height}/> :"" } 
-        </p>
-        <p id="moves-id" className='about-list'>
-        { moves ? <PokemonDetails click={"about"} height={item.height}/> :"" } 
-        </p>
+       
 
     </div>
     

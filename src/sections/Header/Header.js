@@ -10,7 +10,7 @@ const Header = () => {
     <div className="navbar navbar-expand-md navbar-dark cyborg-navbar">
         <div className="container">
             <a href="#" className="navbar-brand ">
-                <span className='nav-arrow' onClick={() => navigate(-1)}><FaLongArrowAltLeft/></span>
+                <span className='nav-arrow' onClick={() => navigate('/')}><FaLongArrowAltLeft/></span>
             </a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainmenu">
                 <span className="navbar-toggler-icon"></span>

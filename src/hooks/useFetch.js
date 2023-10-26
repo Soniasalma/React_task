@@ -1,26 +1,34 @@
 import { useEffect,useState } from "react"
 import { fetchApi } from "./fetchApi"
 import axios from 'axios';
+import ReactPaginate from "react-paginate";
 
 const useFetch=(endPoint)=>{
 
     const[data,setData]=useState(null)
+    const[loading,setLoading]=useState(false)
+    const[err,setErr]=useState(null)
+
     const arr=[]
     
 
 useEffect(()=>{
   const  fetchData = async ()=>{
-         await fetchApi.get(endPoint)
-        .then((res)=>{
-            res.data.results.forEach(function(pokemon){
-              fetchPokemonData(pokemon); 
-            })
+       try{
+        setLoading(true)
+        await fetchApi.get(endPoint)
+       .then((res)=>{
+           res.data.results.forEach(function(pokemon){
+             setLoading(false)
+             fetchPokemonData(pokemon); 
            })
-           
-       
+          })
+       }
+       catch(err){
+        setErr(err)
+       }
+       setLoading(false) 
     }
-
-    
     fetchData()
 
 },[endPoint])
@@ -35,7 +43,7 @@ function fetchPokemonData(pokemon){
         console.log(data)
       console.log(arr.length)
       })}
-return [data]
+return {data,loading,err}
 
 }
 export default useFetch

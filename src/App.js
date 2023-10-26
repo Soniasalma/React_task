@@ -1,9 +1,7 @@
 
 import './App.css';
 
-/*import Header from './components/Header/Header';
-import Container from './components/Container/Container';
-import Footer from './components/Footer/Footer';*/
+
 import { Container,Team} from './components/index';
 import { Header,Footer } from './sections/index';
 import { BrowserRouter as Router,Route,Routes } from 'react-router-dom';
