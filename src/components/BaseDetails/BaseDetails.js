@@ -1,27 +1,31 @@
 import React from 'react'
 
 const BaseDetails = (props) => {
-  return (
+  return (<>
     <div className='about-list'>
-    <ul className='detail-items'>
-      <li>
-        <h3>  Hp  </h3>
-        <span>{props.hp}</span>
-      </li>
-      <li>
-        <h3>  Attack  </h3>
-        <span>{props.attack}</span>
-      </li>
-      <li>
-        <h3>  Defense  </h3>
-        <span>{props.defense}</span>
-      </li>
-      <li>
-        <h3>  Speed  </h3>
-        <span>{props.speed}</span>
-      </li>
-      </ul>
       </div>
+      <div>
+       <table class="table table-striped">
+       <thead>
+       </thead>
+       <tbody>
+         <tr>
+           <td>Hp</td>
+           <td>Attack</td>
+           <td>Defence</td>
+           <td>Speed</td>
+         </tr>
+         <tr>
+           <td>{props.hp}</td>
+           <td>{props.attack}</td>
+           <td>{props.defense}</td>
+           <td>{props.speed}</td>
+         </tr>
+        
+       </tbody>
+     </table>
+   </div>
+   </>
   )
 }
 

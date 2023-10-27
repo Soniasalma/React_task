@@ -133,7 +133,7 @@ console.log(arr2)
       
       </div>
       <div class="nav-item">
-      <a href="#" onClick={()=>handleLinkClick(<EvolutionDetails    />)}>Evolution</a>
+      <a href="#" onClick={()=>handleLinkClick(<EvolutionDetails  number={`#${item.id}`} />)}>Evolution</a>
       </div>
       <div class="nav-item">
       <a href="#" onClick={()=>handleLinkClick(<MovesDetails    />)}>Moves</a>

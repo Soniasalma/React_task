@@ -7,23 +7,27 @@ export const PokemonDetails = (props) => {
     
     
     <div className='about-list'>
-    <ul className='detail-items'>
-      <li>
-        <h3>Species  </h3>
-        <span>{props.species}</span>
-      </li>
-      <li>
-        <h4>Height  </h4>
-        <span>{props.height}</span>
-      </li>
-      <li>
-        <h4>Weight  </h4>
-        <span>{props.weight}</span>
-        </li>
-     
-       
-     
-    </ul>
+    <div>
+       <table class="table table-striped">
+       <thead>
+       </thead>
+       <tbody>
+         <tr>
+           <td>Species</td>
+           <td>Height</td>
+           <td>Weight</td>
+           
+         </tr>
+         <tr>
+           <td>{props.species}</td>
+           <td>{props.height}</td>
+           <td>{props.weight}</td>
+           
+         </tr>
+        
+       </tbody>
+     </table>
+   </div>
 
     
     
