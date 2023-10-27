@@ -6,3 +6,12 @@
     display:flex;
     justify-content:space-around;
 }
+.about-list{
+    align-items: center;
+}
+.detail-items{
+    margin:var(--margin-primary);
+    display: grid;
+    grid-template-columns: auto   ;
+    width:inline;
+}

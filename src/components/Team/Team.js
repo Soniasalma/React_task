@@ -1,7 +1,7 @@
 import  './Team.css'
 import{FaBars,FaTrash,FaRedoAlt} from 'react-icons/fa'
 
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useSelector,useDispatch } from 'react-redux'
 import { removeFromTeam ,resetTeam} from '../../redux/teamReducer'
 import{SectionWrapper} from '../../components/index'
@@ -9,6 +9,7 @@ import{Header} from '../../sections/index'
 import { useRef } from 'react'
 import { DragDropContext, Droppable , Draggable} from "@hello-pangea/dnd"
 import { dragAndDropSave } from '../../redux/teamReducer'
+
 
 
 const Team = () => {
@@ -20,6 +21,7 @@ const Team = () => {
     localStorage.setItem('todoList', pokemons);
     
     function handleOnDragEnd(result) {
+     
       const {destination,source} = result;
       //console.log(result)
       if (!result.destination) return;

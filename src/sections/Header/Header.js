@@ -9,9 +9,8 @@ const Header = () => {
   return (
     <div className="navbar navbar-expand-md navbar-dark cyborg-navbar">
         <div className="container">
-            <a href="#" className="navbar-brand ">
-                <span className='nav-arrow' onClick={() => navigate('/')}><FaLongArrowAltLeft/></span>
-            </a>
+        <Link to="/" className='navbar-brand nav-arrow' ><FaLongArrowAltLeft/></Link>
+            
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainmenu">
                 <span className="navbar-toggler-icon"></span>
             </button>

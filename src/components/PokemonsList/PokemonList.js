@@ -16,40 +16,41 @@ const PokemonList = () => {
   const [pageCount, setPageCount] = useState(0);
   const [total, setTotal] = useState(100);
   const[load,setLoad]=useState()
+   const [pokePerPage, setPokePerPage] = useState([]);
   let limit=10;
 
  
-const {data,loading,err}=useFetch(`/pokemon?page=${currentPage}&limit=${limit}`)
-const arr=[]
-
-
- useEffect(()=>{
-  data && setPoke(data)
-  setLoad(loading)
- 
-  
-    
-},[currentPage])
-console .log("loading")
-console .log(load)
+const {data,loading,err}=useFetch(`/pokemon?limit=${total}`)
+let arr=[]
 
 useEffect(() => {
+  data && setPoke(data)
+  setLoad(loading)
   const temp=Math.ceil(total/10)
   setPageCount(temp)
+  const startIndex = (currentPage-1 ) * limit;
+  const endIndex = startIndex + limit;
+  arr = poke.slice(startIndex, endIndex);
+  setPokePerPage(arr)
+  console.log("currentItems")
+  console.log(arr)
   console.log("ttteeeemmmmp")
   console.log(temp)
   
-}, []);
+},[currentPage])
 
-{/*useEffect(() => {
-  window.localStorage.setItem('data', data);
-}, [data]);*/}
+console .log("loading")
+console .log(load)
+
+
 const handlePageClick=(data)=>{
-  console.log("selected")
-  const select=(data.selected+1)
+   const select=(data.selected+1)
+   setCurrentPage(select)
   console.log("select")
   console.log(select)
-  setCurrentPage(select)
+  
+
+  
 }
 
 
@@ -61,7 +62,7 @@ return (
     
     <div className='pokemon-list-item'>
   { loading ? "Loading . . . ":
-      poke.map((item) => {
+      pokePerPage.map((item) => {
         return (
           <div  key={item.id}className=' pokemon-card'>
           <div  className='pokemon-card-wrapper ' style={{minHeight:225}} >
@@ -85,7 +86,7 @@ return (
     <h6 key={tipo.id}>{tipo.type.name}</h6>)})
     }
     
-   <div clasName="card-btn">
+   <div className="card-btn">
    <Link to={`/CardOfPokemon/${item.id}`} className="primary-btn">
     <button>details</button>
    </Link>
@@ -98,11 +99,6 @@ return (
       })}
       
       </div>
-     {/* <box sx={{display:"flex", justifyContent:"center",mt:1}}>
-       {Array.from({length:totalPages},(_,i)=>i+1).map((page)=>{
-        return<button onclick={()=>setCurrentPage(page)}>{page}</button>
-       })}
-      </box>*/}
       <ReactPaginate 
       previousLabel={"previos"}
       nextLabel={"next"}

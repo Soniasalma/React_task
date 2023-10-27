@@ -5,29 +5,46 @@
     
     
 }
+.nav-item a{
+    color:#383434;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.nav-item a:visited{
+text-decoration: underline;
+color:var(--color-darkest)
+}
 .content-details{
     padding:calc(var(--padding-primary)/4) ;
     background-color: var(--color-light);
+     border: 1px solid #c8c8c8;
     
 }
 .pokemon-sec-up{
     padding:var(--padding-primary);
     padding-bottom: 300px;
-    border: 1px solid red;
+   
     height: fit-content;
     position: relative;
+    border: 1px solid #c8c8c8;
 }
 
 .set-of-links{
-    border-top-right-radius: var(--border-radius-primary);
-    border-top-left-radius: var(--border-radius-primary);
-    border:1px solid green;
+   
+    border: 1px solid #c8c8c8;
+   
 }
 .card-image{
 position: absolute;
 bottom: 0px;
 left: 40%;
 z-index:  1;
+
+width: 50%;
+height: 75%;
+
+    margin-top: -20rem;
 
 }
 .nav-link{
@@ -79,14 +96,28 @@ z-index:  1;
     margin-top: 0;
 }
 .team-btn{
-    margin-top: calc(var(--margin-primary)/2);
+    margin-top: Calc(var(--margin-primary)*2);
     float: left;
 
 }
 
 .card-pokemon {
     
-    background-color:var(--color-light);
+    background-color: white;
+    border-top: 2px solid black;
+    padding: var(--margin-primary);
+    border-radius: .5rem;
+    
+    margin-bottom: 3rem;
+    margin-top:3rem ;
+    background-repeat: no-repeat;
+    
+    background-position: 100%;
+    box-shadow: 4px 4px 30px rgb(59, 58, 58);
+    color: white;
+    
+
+    
  }
  .detail-add a{
      

@@ -9,8 +9,8 @@ export const PokemonDetails = (props) => {
     <div className='about-list'>
     <ul className='detail-items'>
       <li>
-        <h3>Classification  </h3>
-        <span>{props.classification}</span>
+        <h3>Species  </h3>
+        <span>{props.species}</span>
       </li>
       <li>
         <h4>Height  </h4>
@@ -20,18 +20,9 @@ export const PokemonDetails = (props) => {
         <h4>Weight  </h4>
         <span>{props.weight}</span>
         </li>
-      <li>
-        <h4>Resistant  </h4>
-        <span>{props.resistant}</span>
-        </li>
-      <li>
-        <h4>Abilities  </h4>
-         
-   <span></span>
-    
-    
-    
-        </li>
+     
+       
+     
     </ul>
 
     

@@ -10,22 +10,17 @@ import SectionWrapper from '../SectionWrapper/SectionWrapper'
 import { PokemonDetails } from '../PokemonDetails/PokemonDetails'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToTeam } from '../../redux/teamReducer'
+import {BaseDetails, EvolutionDetails, MovesDetails} from'../../components/index'
 
-const arr=[]
+
+let arr=[]
 const arr2=[]
-
-
-
 const CardOfPokemon = () => {
   const navigate = useNavigate()
   const[pokeSelect,setPokeSelect]=useState(null)
  
-
-  const [about,setAbout]=useState(false)
-  const [base,setBase]=useState(false)
-  const [evolution,setEvolution]=useState(false)
-  const [moves,setMoves]=useState(false)
-
+  const[content,setContent]=useState(null)
+  
   const dispatch=useDispatch()
 
   const teamMembers=useSelector(state=>state.team.pokemons)
@@ -41,14 +36,10 @@ const CardOfPokemon = () => {
   console.log(params.id)
 
   useEffect(() => {
+    arr=[]
    getData(id);
-   setPokeSelect(window.localStorage.getItem('arr'));
-   
-
-  }, []);
-  useEffect(() => {
-    window.localStorage.setItem('arr', arr);
-  }, [params]);
+  }, [id]);
+  
 
   function getData(id){
 
@@ -62,39 +53,17 @@ const CardOfPokemon = () => {
 
       console.log(arr)
       })}
+      
 
-      useEffect(() => {
-        setPokeSelect(window.localStorage.getItem('arr'));
-      }, []);
+      
       
      
 
-    
-    const showAboutDetails=()=>{
-        about ? setAbout(false):setAbout(true)
-        setBase(false)
-        setEvolution(false)
-        setMoves(false)
+    const handleLinkClick=(component)=>{
+      setContent(component)
     }
-    const showBaseDetails=()=>{
-      base ? setBase(false):setBase(true)
-      setAbout(false)
-      setEvolution(false)
-        setMoves(false)
-  }
-  const showEvolutionDetails=()=>{
-    evolution ? setBase(false):setBase(true)
-}
-const showMovesDetails=()=>{
-  moves ? setBase(false):setBase(true)
-}
-function getAbilities(id){
-  const pok=arr[id].abilities
-  for (const pokemon of pok) {
-    arr2.push(pokemon)
-    return arr2
-  }
-}
+
+    
 console.log("aaaarrrr222222")
 console.log(arr2)
 
@@ -109,9 +78,8 @@ console.log(arr2)
     <div className="card-header">
       <ul className="nav  nav-items header-links">
         <li className="nav-item arrow-li">
-          <a className="nav-link back-arrow"  href="#">
-          <span className='nav-arrow-left' onClick={() => navigate("/")}><FaLongArrowAltLeft/></span>
-          </a>
+          <Link to="/" className='nav-arrow-left' ><FaLongArrowAltLeft/></Link>
+        
         </li>
         <li className="nav-item">
           <a className="nav-link" href="#">
@@ -155,18 +123,20 @@ console.log(arr2)
       <div class="nav-item active">
        
       <div> 
-      <Link to="#about-id" className="nav-link" onClick= { showAboutDetails } >About</Link>
+     
+      <a href="#" onClick={()=>handleLinkClick(<PokemonDetails  height={item.height} weight={item.weight} abilities={item.abilities} species={item.species.name} />)}>About</a>
         </div>
         
         </div>
       <div class="nav-item">
-      <Link to="#about-id" className="nav-link" onclick={showBaseDetails} >Base State</Link>
+        <a href="#" onClick={()=>handleLinkClick(<BaseDetails  hp={item.stats[0].base_stat} attack={item.stats[1].base_stat} defense={item.stats[2].base_stat}  speed={item.stats[5].base_stat}/>)}>Base Stats</a>
+      
       </div>
       <div class="nav-item">
-      <Link to="#evolution-id" className="nav-link" onclick={showEvolutionDetails} >Evolution</Link>
+      <a href="#" onClick={()=>handleLinkClick(<EvolutionDetails    />)}>Evolution</a>
       </div>
       <div class="nav-item">
-      <Link to="#moves-id" className="nav-link" onclick={showMovesDetails} >Moves</Link>
+      <a href="#" onClick={()=>handleLinkClick(<MovesDetails    />)}>Moves</a>
       </div>
     </div>
      
@@ -174,11 +144,12 @@ console.log(arr2)
     </div>
 
     <div>
-    <p id="about-id" className='about-list'>
+      <div>{content}</div>
+   {/* <p id="about-id" className='about-list'>
         { about && <PokemonDetails  height={item.height} weight={item.weight}  /> } 
         { base && <PokemonDetails  height={item.height}/>  } 
         
-        </p>
+    </p>*/}
        
 
     </div>

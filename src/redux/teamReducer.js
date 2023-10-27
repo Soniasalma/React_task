@@ -54,7 +54,8 @@ export const teamSlice = createSlice({
     resetTeam: (state) => {
       
       state.pokemons=[]
-        
+        if(state.pokemons.length===0)
+        alert("there are no pokemons in the team ")
         
       },
       dragAndDropSave(state, action) {
