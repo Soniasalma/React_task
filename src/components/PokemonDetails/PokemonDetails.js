@@ -2,28 +2,38 @@ import React from 'react'
 import './PokemonDetails.css'
 import SectionWrapper from '../SectionWrapper/SectionWrapper'
 export const PokemonDetails = (props) => {
+   
   return (
     <section >
     
     
     <div className='about-list'>
     <div>
-       <table class="table table-striped">
+       <table  style={{width:"30%"}} >
        <thead>
        </thead>
        <tbody>
          <tr>
-           <td>Species</td>
-           <td>Height</td>
-           <td>Weight</td>
+         <th >species</th>
+           <td>{props.species}</td>
+           
            
          </tr>
          <tr>
-           <td>{props.species}</td>
-           <td>{props.height}</td>
-           <td>{props.weight}</td>
+           <th>Height</th>
+           <td>{(props.height / 10) + " m."}</td>
+           
            
          </tr>
+         <tr>
+           <th>Weight</th>
+           <td>{ Math.floor(props.weight / 10) + ".0 kg."}</td>
+           
+           
+         </tr>
+        
+         
+        
         
        </tbody>
      </table>

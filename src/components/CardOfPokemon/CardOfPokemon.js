@@ -13,21 +13,22 @@ import { addToTeam } from '../../redux/teamReducer'
 import {BaseDetails, EvolutionDetails, MovesDetails} from'../../components/index'
 
 
+
+
 let arr=[]
 const arr2=[]
 const CardOfPokemon = () => {
-  const navigate = useNavigate()
+  
   const[pokeSelect,setPokeSelect]=useState(null)
  
   const[content,setContent]=useState(null)
+  const[isClicked,setIsClicked]=useState(false)
   
   const dispatch=useDispatch()
 
   const teamMembers=useSelector(state=>state.team.pokemons)
   console.log("teaaammmemberrrs")
    console.log(teamMembers)
-   
-
   
   
   let params=useParams();
@@ -38,6 +39,7 @@ const CardOfPokemon = () => {
   useEffect(() => {
     arr=[]
    getData(id);
+   
   }, [id]);
   
 
@@ -50,18 +52,66 @@ const CardOfPokemon = () => {
         setPokeSelect(pokeData.data)
          arr.push(pokeData.data)
         console.log("heeeereeeee")
+        setContent(<PokemonDetails  height={arr[0].height} weight={arr[0].weight} abilities={arr[0].abilities} species={arr[0].species.name} />)
 
       console.log(arr)
       })}
       
 
       
-      
+      const handleButtonClick=()=>{
+        setIsClicked(true);
+        
+          dispatch(addToTeam({
+          id:pokeSelect.id,
+          name:pokeSelect.name,
+        image:pokeSelect.sprites.front_default,
+        }))
+        
+      }
      
-
-    const handleLinkClick=(component)=>{
+    const handleLinkClick1=(component)=>{
+      
+      document.getElementById("about-id").style.textDecoration="underLine"
+      document.getElementById("base-id").style.textDecoration="none"
+      document.getElementById("evolution-id").style.textDecoration="none"
+      document.getElementById("moves-id").style.textDecoration="none"
       setContent(component)
-    }
+
+     
+      }
+      const handleLinkClick2=(component)=>{
+      document.getElementById("base-id").style.textDecoration="underLine"
+      document.getElementById("about-id").style.textDecoration="none"
+      document.getElementById("evolution-id").style.textDecoration="none"
+      document.getElementById("moves-id").style.textDecoration="none"
+      
+        setContent(component)
+       
+        }
+        const handleLinkClick3=(component)=>{
+          document.getElementById("evolution-id").style.textDecoration="underLine"
+          document.getElementById("base-id").style.textDecoration="none"
+          document.getElementById("about-id").style.textDecoration="none"
+          
+          document.getElementById("moves-id").style.textDecoration="none"
+       
+          setContent(component)
+    
+         
+          }
+          const handleLinkClick4=(component)=>{
+            document.getElementById("moves-id").style.textDecoration="underLine"
+      document.getElementById("base-id").style.textDecoration="none"
+      document.getElementById("about-id").style.textDecoration="none"
+      document.getElementById("evolution-id").style.textDecoration="none"
+      
+       
+            setContent(component)
+      
+           
+            }
+    
 
     
 console.log("aaaarrrr222222")
@@ -73,15 +123,16 @@ console.log(arr2)
     {arr.map((item)=>{
     return(
       <SectionWrapper>
-      <div className="card text-center card-pokemon">
+        <div className="card-wrapper">
+      <div className="card text-center card-pokemon" >
 
     <div className="card-header">
       <ul className="nav  nav-items header-links">
-        <li className="nav-item arrow-li">
+        <li >
           <Link to="/" className='nav-arrow-left' ><FaLongArrowAltLeft/></Link>
         
         </li>
-        <li className="nav-item">
+        <li >
           <a className="nav-link" href="#">
           <span className='nav-heart'><AiOutlineHeart/></span>
             </a>
@@ -104,61 +155,57 @@ console.log(arr2)
      </div>
 
       <div className=" detail-add">
-      <button className='team-btn' onClick={()=>{dispatch(addToTeam({
-        id:item.id,
-        name:item.name,
-      image:item.sprites.front_default,
-      }))
-      }}>Add to team</button>
+      <button className='team-btn' disabled={isClicked} onClick={handleButtonClick}>Add to team</button>
       </div>
       </div>
       
     </div>
   
-  <div className='set-of-links' >
+    <div className='set-of-links' >
   
-    <div className='content-details'>
-    <div class="nav  nav-items body-links ">
-      
-      <div class="nav-item active">
-       
-      <div> 
-     
-      <a href="#" onClick={()=>handleLinkClick(<PokemonDetails  height={item.height} weight={item.weight} abilities={item.abilities} species={item.species.name} />)}>About</a>
-        </div>
-        
-        </div>
-      <div class="nav-item">
-        <a href="#" onClick={()=>handleLinkClick(<BaseDetails  hp={item.stats[0].base_stat} attack={item.stats[1].base_stat} defense={item.stats[2].base_stat}  speed={item.stats[5].base_stat}/>)}>Base Stats</a>
-      
-      </div>
-      <div class="nav-item">
-      <a href="#" onClick={()=>handleLinkClick(<EvolutionDetails  number={`#${item.id}`} />)}>Evolution</a>
-      </div>
-      <div class="nav-item">
-      <a href="#" onClick={()=>handleLinkClick(<MovesDetails    />)}>Moves</a>
-      </div>
-    </div>
-     
-
-    </div>
-
-    <div>
-      <div>{content}</div>
-   {/* <p id="about-id" className='about-list'>
-        { about && <PokemonDetails  height={item.height} weight={item.weight}  /> } 
-        { base && <PokemonDetails  height={item.height}/>  } 
-        
-    </p>*/}
-       
-
-    </div>
+  <div className='content-details'>
+  <div class="nav  nav-items body-links ">
     
+    <div className="nav-item ">
+     
+    <div> 
+   
+    <a id="about-id" style={{textDecoration:"underLine"}} className='active'  onClick={()=>handleLinkClick1(<PokemonDetails  height={item.height} weight={item.weight} types={[item.types]} species={item.species.name} />)}>About</a>
+      </div>
+      
+      </div>
+    <div class="nav-item">
+      <a id="base-id"  onClick={()=>handleLinkClick2(<BaseDetails  hp={item.stats[0].base_stat} attack={item.stats[1].base_stat} defense={item.stats[2].base_stat}  speed={item.stats[5].base_stat}/>)}>Base Stats</a>
     
+    </div>
+    <div class="nav-item">
+    <a id="evolution-id"  onClick={()=>handleLinkClick3(<EvolutionDetails  types={`#${item.id}`} />)}>Evolution</a>
+    </div>
+    <div class="nav-item">
+    <a id="moves-id"  onClick={()=>handleLinkClick4(<MovesDetails    />)}>Moves</a>
+    </div>
+  </div>
+   
+
+  </div>
+
+  <div>
+    <div>{content}</div>
+ {/* <p id="about-id" className='about-list'>
+      { about && <PokemonDetails  height={item.height} weight={item.weight}  /> } 
+      { base && <PokemonDetails  height={item.height}/>  } 
+      
+  </p>*/}
+     
+
+  </div>
+  
   
 
-      </div>
 
+    </div>
+
+  </div>
   </div>
       </SectionWrapper>
     )

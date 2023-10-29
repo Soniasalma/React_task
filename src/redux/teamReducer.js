@@ -1,21 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = 
-  localStorage.getItem('todoList') !== null
-    ? localStorage.getItem('todoList')
-    : { pokemons: [] };
-
-localStorage.setItem('todoList', initialState);
+const initialState = {
+  pokemons: [],
+}
 
 export const teamSlice = createSlice({
   name: 'team',
   initialState,
   reducers: {
     addToTeam: (state , action) => {
-
       const pokemon=state.pokemons.find(item=>item.id===action.payload.id)
-     
-     
       if(pokemon){
         alert("You can't add this Pokemon ,it is in the team")
       }
@@ -36,38 +30,38 @@ export const teamSlice = createSlice({
         state.pokemons.push(action.payload)
         alert("The pokemon has added to the team")
       }
-
-      
-      
+     
 
     },
     removeFromTeam: (state , action) => {
-      if(state.pokemons.length === 0 )
-      alert("There are no pokemons in the team")
-    else{
-    
-    state.pokemons=state.pokemons.filter(item=>item.id !== action.payload.id)
-    alert("The Pokemon has removed from the team")}
-    
+      
+    state.pokemons=state.pokemons.filter(item=>item.id != action.payload.id)
+    alert("The Pokemon has removed from the team")
+      
       
     },
     resetTeam: (state) => {
-      
-      state.pokemons=[]
-        if(state.pokemons.length===0)
+      if(state.pokemons.length===0)
         alert("there are no pokemons in the team ")
+      else{
+        state.pokemons=[]
+        alert("The entire pokemon team has eliminated ")
+      }
+     
+        
         
       },
-      dragAndDropSave(state, action) {
-        state.pokemons = action.payload;
-        localStorage.setItem('todoList', state);
-      },
+      updatePokemonsOrder:(state,action)=>{
+        const{startIndex,endIndex}=action.payload;
+        const[removed]=state.pokemons.splice(startIndex,1);
+        state.pokemons.splice(endIndex,0,removed)
+      }
    
    
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addToTeam,removeFromTeam ,resetTeam,dragAndDropSave} = teamSlice.actions
+export const { addToTeam,removeFromTeam ,resetTeam,updatePokemonsOrder} = teamSlice.actions
 
 export default teamSlice.reducer

@@ -22,6 +22,10 @@ const PokemonList = () => {
  
 const {data,loading,err}=useFetch(`/pokemon?limit=${total}`)
 let arr=[]
+useEffect(()=>{
+  
+},[])
+
 
 useEffect(() => {
   data && setPoke(data)

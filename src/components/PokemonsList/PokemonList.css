@@ -36,8 +36,9 @@
   
 }
 .card-btn{
-    margin:Calc(var(--padding-primary)/4) ;
-   
+    
+   position: absolute;
+   bottom:20px;
 }
 .pokemon-card-wrapper{
     background-color: var(--color-light);

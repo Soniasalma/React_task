@@ -5,21 +5,25 @@ const BaseDetails = (props) => {
     <div className='about-list'>
       </div>
       <div>
-       <table class="table table-striped">
+       <table  style={{width:"30%"}}>
        <thead>
        </thead>
        <tbody>
          <tr>
-           <td>Hp</td>
-           <td>Attack</td>
-           <td>Defence</td>
-           <td>Speed</td>
+           <th>Hp</th>
+           <td>{props.hp}</td>
          </tr>
          <tr>
-           <td>{props.hp}</td>
+         <th>Attack</th>
            <td>{props.attack}</td>
-           <td>{props.defense}</td>
-           <td>{props.speed}</td>
+         </tr>
+         <tr>
+         <th>Defence</th>
+         <td>{props.defense}</td>
+         </tr>
+         <tr>
+         <th>Speed</th>
+          <td>{props.speed}</td>
          </tr>
         
        </tbody>

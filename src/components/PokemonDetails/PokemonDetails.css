@@ -1,17 +1,11 @@
 
-.detail-items{
-    width:initial;
+
+
+td,th{
+   padding: 25px;
+   margin:25px;
+   font-size: 17px;
 }
-.detail-items li{
-    display:flex;
-    justify-content:space-around;
-}
-.about-list{
-    align-items: center;
-}
-.detail-items{
-    margin:var(--margin-primary);
-    display: grid;
-    grid-template-columns: auto   ;
-    width:inline;
+th{
+    color:#464545;
 }

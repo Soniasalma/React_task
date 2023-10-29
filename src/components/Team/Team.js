@@ -3,40 +3,37 @@ import{FaBars,FaTrash,FaRedoAlt} from 'react-icons/fa'
 
 import { useCallback, useEffect, useState } from 'react'
 import { useSelector,useDispatch } from 'react-redux'
-import { removeFromTeam ,resetTeam} from '../../redux/teamReducer'
+import { removeFromTeam ,resetTeam,updatePokemonsOrder} from '../../redux/teamReducer'
 import{SectionWrapper} from '../../components/index'
 import{Header} from '../../sections/index'
 import { useRef } from 'react'
 import { DragDropContext, Droppable , Draggable} from "@hello-pangea/dnd"
-import { dragAndDropSave } from '../../redux/teamReducer'
+
 
 
 
 const Team = () => {
    
   
-  const dispatch=useDispatch()
+ 
+    
+    
+    const [isDragging,setIsDragging]=useState(false);
     const pokemons=useSelector(state=>state.team.pokemons)
     const [characters, updateCharacters] = useState(pokemons);
-    localStorage.setItem('todoList', pokemons);
-    
-    function handleOnDragEnd(result) {
-     
-      const {destination,source} = result;
-      //console.log(result)
-      if (!result.destination) return;
-      const items = Array.from(characters);
-const [reorderedItem] = items.splice(result.source.index, 1);
-items.splice(destination.index, 0, reorderedItem);
+    const dispatch=useDispatch()
 
-updateCharacters(items);
-dispatch(dragAndDropSave(items));
+    const handleDragStart=()=>{
+      setIsDragging(true);
+    }
 
+    const handleOnDragEnd=(result) =>{
+      setIsDragging(false);
+     const startIndex=result.source.index;
+     const endIndex=result.destination.index;
+     dispatch(updatePokemonsOrder({startIndex,endIndex}))
 
 }
-    
-    
-
     console.log("Pokemooooonnnnnssssss")
     console.log(pokemons);
 
@@ -44,17 +41,15 @@ dispatch(dragAndDropSave(items));
     <>
     
      <SectionWrapper>
-     
-      
       <Header/>
       {   <>
       <div className='team-page'>
         <div className='team-div'>
-        <DragDropContext onDragEnd={handleOnDragEnd}>
-        <Droppable droppableId="characters">
+        <DragDropContext onDragStart={handleDragStart} onDragEnd={handleOnDragEnd}>
+        <Droppable droppableId="pokemons">
       {(provided) => (
       <ul className="characters" {...provided.droppableProps} ref={provided.innerRef}>
-      {characters.map((pokemon,index)=>
+      {pokemons.map((pokemon,index)=>
        ( 
         <Draggable key={pokemon.id} draggableId={pokemon.id.toString()} index={index}>
         {(provided) => (
