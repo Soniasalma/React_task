@@ -52,7 +52,7 @@ const CardOfPokemon = () => {
         setPokeSelect(pokeData.data)
          arr.push(pokeData.data)
         console.log("heeeereeeee")
-        setContent(<PokemonDetails  height={arr[0].height} weight={arr[0].weight} abilities={arr[0].abilities} species={arr[0].species.name} />)
+        setContent(<PokemonDetails  height={arr[0].height} weight={arr[0].weight}  species={arr[0].species.name} />)
 
       console.log(arr)
       })}
@@ -169,8 +169,8 @@ console.log(arr2)
     <div className="nav-item ">
      
     <div> 
-   
-    <a id="about-id" style={{textDecoration:"underLine"}} className='active'  onClick={()=>handleLinkClick1(<PokemonDetails  height={item.height} weight={item.weight} types={[item.types]} species={item.species.name} />)}>About</a>
+   {console.log(item.types)}
+    <a id="about-id" style={{textDecoration:"underLine"}} className='active'  onClick={()=>handleLinkClick1(<PokemonDetails  height={item.height} weight={item.weight}  species={item.species.name} />)}>About</a>
       </div>
       
       </div>
@@ -179,10 +179,10 @@ console.log(arr2)
     
     </div>
     <div class="nav-item">
-    <a id="evolution-id"  onClick={()=>handleLinkClick3(<EvolutionDetails  types={`#${item.id}`} />)}>Evolution</a>
+    <a id="evolution-id"  onClick={()=>handleLinkClick3(<EvolutionDetails number={item.id}  name={item.name} types={[item.types.map((type)=>type.type.name)]} />)}>Evolution</a>
     </div>
     <div class="nav-item">
-    <a id="moves-id"  onClick={()=>handleLinkClick4(<MovesDetails    />)}>Moves</a>
+    <a id="moves-id"  onClick={()=>handleLinkClick4(<MovesDetails moves={item.moves.map((move)=>move.move.name)}   />)}>Moves</a>
     </div>
   </div>
    

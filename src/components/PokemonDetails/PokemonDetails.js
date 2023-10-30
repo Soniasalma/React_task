@@ -2,7 +2,7 @@ import React from 'react'
 import './PokemonDetails.css'
 import SectionWrapper from '../SectionWrapper/SectionWrapper'
 export const PokemonDetails = (props) => {
-   
+  
   return (
     <section >
     
@@ -31,6 +31,7 @@ export const PokemonDetails = (props) => {
            
            
          </tr>
+       
         
          
         

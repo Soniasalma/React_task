@@ -1,8 +1,33 @@
 import React from 'react'
 
-const MovesDetails = () => {
+const MovesDetails = (props) => {
   return (
-    <div>MovesDetails</div>
+    <section >
+    
+    
+    <div className='moves-list'>
+    <div>
+       <table  style={{width:"30%"}} >
+       <thead>
+       </thead>
+       <tbody>
+         <tr>
+         <th >Moves</th>
+           <td>{props.moves.map((move)=><span>{move}</span>)}</td>
+         </tr>
+       </tbody>
+     </table>
+   </div>
+
+    
+    
+    
+    </div>
+   
+  
+   
+    </section>
+    
   )
 }
 

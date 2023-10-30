@@ -1,0 +1,11 @@
+td,th{
+    padding: 25px;
+    margin:25px;
+    font-size: 17px;
+ }
+ th{
+     color:#464545;
+ }
+ tr{
+    border-bottom: none;
+ }
